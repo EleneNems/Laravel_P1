@@ -16,3 +16,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('/home', function () {
+//     return view('home');
+// });
+
+//an
+
+Route::view('/home', "home", ['name' => "Elene", 'lastname' => "Nemstsveridze"]);
+
+
+Route::get('/test1', function () {
+    return "Hello Laravel";
+});
+
+Route::redirect('/test2', '/test1');
+
+Route::get('/user/{id?}', function ($id=0) {
+    return 'User '.$id;
+});
