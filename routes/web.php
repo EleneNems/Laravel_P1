@@ -1,6 +1,7 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestControl;
+use App\Http\Controllers\GreetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,16 @@ Route::redirect('/test2', '/test1');
 Route::get('/user/{id?}', function ($id=0) {
     return 'User '.$id;
 });
+
+Route::get('/control', [TestControl::class, 'func_1']);
+
+Route::get('/form', function () {
+    return view('form');
+});
+
+
+// Form display
+Route::get('/form', [GreetController::class, 'showForm'])->name('greeting.form');
+
+// Form submission
+Route::post('/form', [GreetController::class, 'generateGreeting'])->name('greeting.generate');
