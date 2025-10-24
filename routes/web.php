@@ -49,3 +49,8 @@ Route::get('/form', [GreetController::class, 'showForm'])->name('greeting.form')
 
 // Form submission
 Route::post('/form', [GreetController::class, 'generateGreeting'])->name('greeting.generate');
+
+use App\Http\Controllers\CategoryController;
+
+Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
