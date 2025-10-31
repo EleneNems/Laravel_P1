@@ -1,7 +1,11 @@
 <?php
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestControl;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\GreetController;
+use App\Http\Controllers\TestControl;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -54,3 +58,9 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+
+Route::resource('students', StudentController::class);
+Route::resource('courses', CourseController::class);
+
+Route::get('students/{student}/enrollments', [StudentController::class, 'enrollments'])->name('students.enrollments');
+Route::post('enrollments', [EnrollmentController::class, 'store'])->name('enrollments.store');
